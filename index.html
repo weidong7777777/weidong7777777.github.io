@@ -149,20 +149,44 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2020/03/16/hello-world/">
-        <p class="h4 index-header">Hello World</p>
+      <a href="/2020/03/16/AWD%E6%AF%94%E8%B5%9B%E7%BB%8F%E9%AA%8C%E5%8F%8A%E5%91%BD%E4%BB%A4%E9%98%B2%E5%BE%A1%E7%AF%87/">
+        <p class="h4 index-header">AWD比赛经验及命令防御篇</p>
       </a>
 
-      <a href="/2020/03/16/hello-world/">
+      <a href="/2020/03/16/AWD%E6%AF%94%E8%B5%9B%E7%BB%8F%E9%AA%8C%E5%8F%8A%E5%91%BD%E4%BB%A4%E9%98%B2%E5%BE%A1%E7%AF%87/">
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post$ hexo new &quot;My New Post&quot;
-More info: Writing
-Run server$ hexo server</div>
+          <div class="index-text mb-1">赛前准备
+win10
+kali
+winSCP
+一些渗透常用工具及脚本
+
+比赛开始拿到自己的服务器
+备份网站文件
+tar -zcvf web.tar.gz /var/www/
+
+修改数据库密码
+
+已知自己数据库密码
+
+使用命令 mysql -u root -pxxxx 进入数据库
+set password = password(‘123456’);
+
+
+不知自己数据库密码
+
+进入/etc/my.cnf，在 mysqld 下面增加一行 skip-grant-tables
+
+保存完之后重启服务
+
+直接输入 mysql -u root -p ，最后回车进入数据库
+
+use mysql; 更改数据库 
+</div>
         </div>
       </a>
 
@@ -171,6 +195,16 @@ Run server$ hexo server</div>
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-16&nbsp;&nbsp;
         
         
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/AWD/">AWD</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-AWD/">网络安全,AWD</a>&nbsp;
+          
         
       </div>
     </div>
