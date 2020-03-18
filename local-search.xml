@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>SQL注入之绕过</title>
+    <link href="/2020/03/18/SQL%E6%B3%A8%E5%85%A5%E4%B9%8B%E7%BB%95%E8%BF%87/"/>
+    <url>/2020/03/18/SQL%E6%B3%A8%E5%85%A5%E4%B9%8B%E7%BB%95%E8%BF%87/</url>
+    
+    <content type="html"><![CDATA[<h1 id="waf相关介绍"><a href="#waf相关介绍" class="headerlink" title="waf相关介绍"></a>waf相关介绍</h1><ul><li>waf（Web Application Firewall）类型有哪些<ul><li>软件型waf</li><li>硬件型waf</li><li>云waf<ul><li>​    反向代理模式工作 通过配置NS记录或者CNAME记录</li></ul></li><li>网站系统内置waf</li></ul></li><li>waf的功能<ul><li>审计</li><li>访问控制</li><li>架构安全的网络设计</li><li>web加固</li></ul></li><li>waf怎么识别扫描器<ul><li>扫描器指纹（head字段/请求的参数值）</li><li>单IP|cookie 某一个时间段发出多少次请求判断</li><li>隐藏链接标签</li></ul></li><li>怎么判断有无waf<ul><li>使用sqlmap       命令–identigy-waf</li><li>手工判断 构造payload 表现为页面无法访问 响应码异常</li></ul></li></ul><h1 id="SQL注入绕过"><a href="#SQL注入绕过" class="headerlink" title="SQL注入绕过"></a>SQL注入绕过</h1><ul><li>黑名单过滤可能会过滤例如空格、/、\、‘、adn、or、union、select、sleep（）、“、limit等字符</li><li>利用自己构造的payload sqlmap tamper</li></ul><h2 id="绕过方法"><a href="#绕过方法" class="headerlink" title="绕过方法"></a>绕过方法</h2><ul><li>双写绕过 <ul><li>例如过滤了and 我们可以用anandd 替代 </li><li>order 可用 ordorderer</li><li>select 可用 selselectct</li></ul></li><li>大小写绕过</li><li>编码绕过<ul><li>base64 ascii 宽字符 url编码 uncode 例如 空格可用%0a</li></ul></li><li>替换关键字<ul><li>union=UNIunionon </li><li>select=SELselectCT</li></ul></li><li>注释绕过<ul><li>空格 /**/ （）</li></ul></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>SQL</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>网络安全,SQL</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>AWD比赛经验及命令防御篇</title>
     <link href="/2020/03/16/AWD%E6%AF%94%E8%B5%9B%E7%BB%8F%E9%AA%8C%E5%8F%8A%E5%91%BD%E4%BB%A4%E9%98%B2%E5%BE%A1%E7%AF%87/"/>
     <url>/2020/03/16/AWD%E6%AF%94%E8%B5%9B%E7%BB%8F%E9%AA%8C%E5%8F%8A%E5%91%BD%E4%BB%A4%E9%98%B2%E5%BE%A1%E7%AF%87/</url>
