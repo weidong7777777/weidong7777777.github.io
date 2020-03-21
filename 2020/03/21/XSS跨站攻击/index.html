@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Sy7">
   <meta name="keywords" content="">
-  <title>Sy7</title>
+  <title>XSS跨站脚本 - Sy7</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -43,7 +43,7 @@
 
 
 <body>
-  <header style="height: 100vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -121,12 +121,35 @@
             </span>
 
             
+              
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  Saturday, March 21st 2020, 2:09 pm
+                </p>
+              
+
+              <p class="mt-1">
+                
+                  
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
+                    265 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta">
+                      <i class="far fa-clock"></i>
+                      1 分钟
+                  </span>
+                
+
+                
+              </p>
+            
           </div>
 
-          
-            <div class="scroll-down-bar">
-              <i class="fas fa-angle-down scroll-down-arrow"></i>
-            </div>
           
         </div>
       </div>
@@ -135,221 +158,125 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board"
-          style=margin-top:0>
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
+      
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5 z-depth-3" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <div class="markdown-body">
+              <h1 id="XSS的原理"><a href="#XSS的原理" class="headerlink" title="XSS的原理"></a>XSS的原理</h1><ul>
+<li>XSS攻击是在网页中嵌入客户端恶意脚本代码这些恶意代码一般是JavaScript语言编写例如</li>
+</ul>
+<pre><code class="php">&lt;script&gt;alert(/xss/)&lt;/script&gt;
+&lt;img src=x onerror=alert(/xss/)&gt;</code></pre>
+<ul>
+<li>XSS的类型<ul>
+<li>反射型XSS<ul>
+<li>又称为非持久性XSS 攻击方式是xss中最常见的漏洞</li>
+</ul>
+</li>
+<li>攻击方式<ul>
+<li>电子邮件 钓鱼网站</li>
+</ul>
+</li>
+<li>储存型XSS<ul>
+<li>又称为持久型xss 攻击脚本将被永久的存放在服务器的数据库或文件中，具有很高的隐藏性</li>
+</ul>
+</li>
+<li>攻击方式<ul>
+<li>论坛 博客 留言板</li>
+</ul>
+</li>
+<li>DOM型XSS<ul>
+<li>是一种特殊的反射型XSS基于DOM文档对象模型的一种漏洞</li>
+<li>恶意链接</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>检测XSS<ul>
+<li>手工检测<ul>
+<li>可得知输出位置<br>输入一些敏感字符 例如“&lt;,&gt;,”,’,()”等 再提交请求后查看HTML源代码看这些输入的字符是否被转义</li>
+<li>无法得知输出位置<br>输入”/&gt;xss test 测试</li>
+</ul>
+</li>
+<li>全自动检测<ul>
+<li>APPSACN AWVS burpsuite 等工具</li>
+<li>专业的XSS扫描工具：XSSER XSSF</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2020/03/21/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/">
-        <p class="h4 index-header">XSS跨站脚本</p>
-      </a>
-
-      <a href="/2020/03/21/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">XSS的原理
-XSS攻击是在网页中嵌入客户端恶意脚本代码这些恶意代码一般是JavaScript语言编写例如
-
-&lt;script&gt;alert(/xss/)&lt;/script&gt;
-&lt;img src=x onerror=alert(/xss/)&gt;
-
-XSS的类型
-反射型XSS
-又称为非持久性XSS 攻击方式是xss中最常见的漏洞
-
-
-攻击方式
-电子邮件 钓鱼网站
-
-
-储存型XSS
-又称为持久型xss 攻击脚本将被永久的存放在服务器的数据库或文件中，具有很高的隐藏性
-
-
-攻击方式
-论坛 博客 留言板
-
-
-DOM型XSS
-是一种特殊的反射型XSS基于DOM文档对象模型的一种</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-21&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/XSS/">XSS</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-XSS/">网络安全,XSS</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2020/03/18/SQL%E6%B3%A8%E5%85%A5%E4%B9%8B%E7%BB%95%E8%BF%87/">
-        <p class="h4 index-header">SQL注入之绕过</p>
-      </a>
-
-      <a href="/2020/03/18/SQL%E6%B3%A8%E5%85%A5%E4%B9%8B%E7%BB%95%E8%BF%87/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">waf相关介绍
-waf（Web Application Firewall）类型有哪些
-软件型waf
-硬件型waf
-云waf
-​    反向代理模式工作 通过配置NS记录或者CNAME记录
-
-
-网站系统内置waf
-
-
-waf的功能
-审计
-访问控制
-架构安全的网络设计
-web加固
-
-
-waf怎么识别扫描器
-扫描器指纹（head字段/请求的参数值）
-单IP|cookie 某一个时间段发出多少次请求判断
-隐藏链接标签
-
-
-怎么判断有无waf
-使用sqlmap       命令–identigy-waf
-手工判断 构造payload 表现为页面无法访问 响应码异常
-
-
-
-SQL注入绕过
-黑名单过滤可能会</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-18&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/SQL/">SQL</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-SQL/">网络安全,SQL</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2020/03/16/AWD%E6%AF%94%E8%B5%9B%E7%BB%8F%E9%AA%8C%E5%8F%8A%E5%91%BD%E4%BB%A4%E9%98%B2%E5%BE%A1%E7%AF%87/">
-        <p class="h4 index-header">AWD比赛经验及命令防御篇</p>
-      </a>
-
-      <a href="/2020/03/16/AWD%E6%AF%94%E8%B5%9B%E7%BB%8F%E9%AA%8C%E5%8F%8A%E5%91%BD%E4%BB%A4%E9%98%B2%E5%BE%A1%E7%AF%87/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">
-赛前准备
-win10
-kali
-winSCP
-一些渗透常用工具及脚本
-
-比赛开始拿到自己的服务器
-备份网站文件
-tar -zcvf web.tar.gz /var/www/
-
-修改数据库密码
-
-已知自己数据库密码
-
-使用命令 mysql -u root -pxxxx 进入数据库
-set password = password(‘123456’);
-
-
-不知自己数据库密码
-
-进入/etc/my.cnf，在 mysqld 下面增加一行 skip-grant-tables
-
-保存完之后重启服务
-
-直接输入 mysql -u root -p ，最后回车进入数据库
-
-use mysql; 更改数据库 </div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-16&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/AWD/">AWD</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-AWD/">网络安全,AWD</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-              </div>
             </div>
+            <hr>
+            <div>
+              <p>
+                
+                  <span>
+                <i class="iconfont icon-inbox"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/XSS/">XSS</a>
+                      &nbsp;
+                    
+                  </span>&nbsp;&nbsp;
+                
+                
+                  <span>
+                <i class="iconfont icon-tag"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-XSS/">网络安全,XSS</a>
+                    
+                  </span>
+                
+              </p>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-12 col-md-6">
+                    
+                  </div>
+                  <div class="post-next col-12 col-md-6">
+                    
+                      <a href="/2020/03/18/SQL%E6%B3%A8%E5%85%A5%E4%B9%8B%E7%BB%95%E8%BF%87/">
+                        <span>SQL注入之绕过</span>
+                        <i class="fa fa-chevron-right"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+              
           </div>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc-start"></div>
+<div id="toc">
+  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
   </main>
 
@@ -414,6 +341,59 @@ use mysql; 更改数据库 </div>
 
 
 
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var navHeight = $('#navbar').height();
+      var toc = $('#toc');
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+      var tocLimMax = 2 * boardTop + boardCtn.height();
+
+      $(window).scroll(function () {
+        var tocLimMin = $('#toc-start').offset().top - navHeight;
+        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
+
+        if (tocLimMin <= scroH && scroH <= tocLimMax) {
+          toc.css({
+            'display': 'block',
+            'position': 'fixed',
+            'top': navHeight,
+          });
+        } else if (scroH <= tocLimMin) {
+          toc.css({
+            'position': '',
+            'top': '',
+          });
+        } else if (scroH > tocLimMax) {
+          toc.css('display', 'none');
+        }
+      });
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc > p').css('visibility', 'visible');
+      }
+      var offset = boardCtn.css('margin-right')
+      $('#toc-ctn').css({
+        'right': offset
+      })
+    });
+  </script>
+
+
+
 
 
 
@@ -440,7 +420,7 @@ use mysql; 更改数据库 </div>
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "每天的努力只为遇见更好的自己&nbsp;",
+        "XSS跨站脚本&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

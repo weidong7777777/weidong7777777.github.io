@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Sy7">
   <meta name="keywords" content="">
-  <title>Sy7</title>
+  <title>Categories - XSS - Sy7</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -43,7 +43,7 @@
 
 
 <body>
-  <header style="height: 100vh;">
+  <header style="height: 80vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -124,10 +124,6 @@
           </div>
 
           
-            <div class="scroll-down-bar">
-              <i class="fas fa-angle-down scroll-down-arrow"></i>
-            </div>
-          
         </div>
       </div>
     </div>
@@ -137,211 +133,27 @@
     
       <div class="container nopadding-md">
         <div class="py-5 z-depth-3" id="board"
-          style=margin-top:0>
+          >
           
           <div class="container">
             <div class="row">
               <div class="col-12 col-md-10 m-auto">
                 
 
-
-  <div class="row mx-auto index-card">
+<div class="list-group">
+<!--  <p class="h4">1 posts in total.</p>-->
+  <hr>
+  
     
+      
+      <p class="h5">2020</p>
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2020/03/21/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/">
-        <p class="h4 index-header">XSS跨站脚本</p>
-      </a>
-
-      <a href="/2020/03/21/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">XSS的原理
-XSS攻击是在网页中嵌入客户端恶意脚本代码这些恶意代码一般是JavaScript语言编写例如
-
-&lt;script&gt;alert(/xss/)&lt;/script&gt;
-&lt;img src=x onerror=alert(/xss/)&gt;
-
-XSS的类型
-反射型XSS
-又称为非持久性XSS 攻击方式是xss中最常见的漏洞
-
-
-攻击方式
-电子邮件 钓鱼网站
-
-
-储存型XSS
-又称为持久型xss 攻击脚本将被永久的存放在服务器的数据库或文件中，具有很高的隐藏性
-
-
-攻击方式
-论坛 博客 留言板
-
-
-DOM型XSS
-是一种特殊的反射型XSS基于DOM文档对象模型的一种</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-21&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/XSS/">XSS</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-XSS/">网络安全,XSS</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2020/03/18/SQL%E6%B3%A8%E5%85%A5%E4%B9%8B%E7%BB%95%E8%BF%87/">
-        <p class="h4 index-header">SQL注入之绕过</p>
-      </a>
-
-      <a href="/2020/03/18/SQL%E6%B3%A8%E5%85%A5%E4%B9%8B%E7%BB%95%E8%BF%87/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">waf相关介绍
-waf（Web Application Firewall）类型有哪些
-软件型waf
-硬件型waf
-云waf
-​    反向代理模式工作 通过配置NS记录或者CNAME记录
-
-
-网站系统内置waf
-
-
-waf的功能
-审计
-访问控制
-架构安全的网络设计
-web加固
-
-
-waf怎么识别扫描器
-扫描器指纹（head字段/请求的参数值）
-单IP|cookie 某一个时间段发出多少次请求判断
-隐藏链接标签
-
-
-怎么判断有无waf
-使用sqlmap       命令–identigy-waf
-手工判断 构造payload 表现为页面无法访问 响应码异常
-
-
-
-SQL注入绕过
-黑名单过滤可能会</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-18&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/SQL/">SQL</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-SQL/">网络安全,SQL</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2020/03/16/AWD%E6%AF%94%E8%B5%9B%E7%BB%8F%E9%AA%8C%E5%8F%8A%E5%91%BD%E4%BB%A4%E9%98%B2%E5%BE%A1%E7%AF%87/">
-        <p class="h4 index-header">AWD比赛经验及命令防御篇</p>
-      </a>
-
-      <a href="/2020/03/16/AWD%E6%AF%94%E8%B5%9B%E7%BB%8F%E9%AA%8C%E5%8F%8A%E5%91%BD%E4%BB%A4%E9%98%B2%E5%BE%A1%E7%AF%87/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">
-赛前准备
-win10
-kali
-winSCP
-一些渗透常用工具及脚本
-
-比赛开始拿到自己的服务器
-备份网站文件
-tar -zcvf web.tar.gz /var/www/
-
-修改数据库密码
-
-已知自己数据库密码
-
-使用命令 mysql -u root -pxxxx 进入数据库
-set password = password(‘123456’);
-
-
-不知自己数据库密码
-
-进入/etc/my.cnf，在 mysqld 下面增加一行 skip-grant-tables
-
-保存完之后重启服务
-
-直接输入 mysql -u root -p ，最后回车进入数据库
-
-use mysql; 更改数据库 </div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-16&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/AWD/">AWD</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-AWD/">网络安全,AWD</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-
+    <a href="/2020/03/21/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">XSS跨站脚本</span>
+      <span style="float: right;">03-21</span>
+    </a>
+  
+</div>
 
 
 
@@ -440,7 +252,7 @@ use mysql; 更改数据库 </div>
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "每天的努力只为遇见更好的自己&nbsp;",
+        "Category - XSS&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

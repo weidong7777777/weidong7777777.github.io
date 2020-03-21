@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>XSS跨站脚本</title>
+    <link href="/2020/03/21/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/"/>
+    <url>/2020/03/21/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/</url>
+    
+    <content type="html"><![CDATA[<h1 id="XSS的原理"><a href="#XSS的原理" class="headerlink" title="XSS的原理"></a>XSS的原理</h1><ul><li>XSS攻击是在网页中嵌入客户端恶意脚本代码这些恶意代码一般是JavaScript语言编写例如</li></ul><pre><code class="php">&lt;script&gt;alert(/xss/)&lt;/script&gt;&lt;img src=x onerror=alert(/xss/)&gt;</code></pre><ul><li>XSS的类型<ul><li>反射型XSS<ul><li>又称为非持久性XSS 攻击方式是xss中最常见的漏洞</li></ul></li><li>攻击方式<ul><li>电子邮件 钓鱼网站</li></ul></li><li>储存型XSS<ul><li>又称为持久型xss 攻击脚本将被永久的存放在服务器的数据库或文件中，具有很高的隐藏性</li></ul></li><li>攻击方式<ul><li>论坛 博客 留言板</li></ul></li><li>DOM型XSS<ul><li>是一种特殊的反射型XSS基于DOM文档对象模型的一种漏洞</li><li>恶意链接</li></ul></li></ul></li><li>检测XSS<ul><li>手工检测<ul><li>可得知输出位置<br>输入一些敏感字符 例如“&lt;,&gt;,”,’,()”等 再提交请求后查看HTML源代码看这些输入的字符是否被转义</li><li>无法得知输出位置<br>输入”/&gt;xss test 测试</li></ul></li><li>全自动检测<ul><li>APPSACN AWVS burpsuite 等工具</li><li>专业的XSS扫描工具：XSSER XSSF</li></ul></li></ul></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>XSS</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>网络安全,XSS</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>SQL注入之绕过</title>
     <link href="/2020/03/18/SQL%E6%B3%A8%E5%85%A5%E4%B9%8B%E7%BB%95%E8%BF%87/"/>
     <url>/2020/03/18/SQL%E6%B3%A8%E5%85%A5%E4%B9%8B%E7%BB%95%E8%BF%87/</url>
