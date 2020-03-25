@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Sy7">
   <meta name="keywords" content="">
-  <title>XSS跨站脚本 - Sy7</title>
+  <title>XSS-labs(1-10) - Sy7</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -124,7 +124,7 @@
               
                 <p class="mt-3 post-meta">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  Saturday, March 21st 2020, 2:09 pm
+                  Wednesday, March 25th 2020, 11:02 am
                 </p>
               
 
@@ -133,7 +133,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    265 字
+                    676 字
                   </span>
                 
 
@@ -141,7 +141,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      1 分钟
+                      2 分钟
                   </span>
                 
 
@@ -169,50 +169,85 @@
           <div class="post-content mx-auto" id="post">
             
             <div class="markdown-body">
-              <h1 id="XSS的原理"><a href="#XSS的原理" class="headerlink" title="XSS的原理"></a>XSS的原理</h1><ul>
-<li>XSS攻击是在网页中嵌入客户端恶意脚本代码这些恶意代码一般是JavaScript语言编写例如</li>
-</ul>
-<pre><code class="php">&lt;script&gt;alert(/xss/)&lt;/script&gt;
-&lt;img src=x onerror=alert(/xss/)&gt;</code></pre>
+              <h1 id="第一关"><a href="#第一关" class="headerlink" title="第一关"></a>第一关</h1><p><img src="https://s1.ax1x.com/2020/03/25/8X1q6H.png" srcset="/img/loading.gif" alt=""></p>
 <ul>
-<li>XSS的类型<ul>
-<li>反射型XSS<ul>
-<li>又称为非持久性XSS 攻击方式是xss中最常见的漏洞</li>
+<li>首先使用最简单的语句在url框中插入，直接通过</li>
 </ul>
-</li>
-<li>攻击方式<ul>
-<li>电子邮件 钓鱼网站</li>
+<p><img src="https://s1.ax1x.com/2020/03/25/8XJIDH.png" srcset="/img/loading.gif" alt=""></p>
+<ul>
+<li>payload: <script>alert(1)</script></li>
 </ul>
-</li>
-<li>储存型XSS<ul>
-<li>又称为持久型xss 攻击脚本将被永久的存放在服务器的数据库或文件中，具有很高的隐藏性</li>
+<h1 id="第二关"><a href="#第二关" class="headerlink" title="第二关"></a>第二关</h1><p><img src="https://s1.ax1x.com/2020/03/25/8XYuZ9.png" srcset="/img/loading.gif" alt=""></p>
+<ul>
+<li>XSS嘛 见框就插 提交后发现它把&lt;&gt;都给过滤了 所以就想到了用on事件触发</li>
+<li>插入onclick=alert(1)点击输入框发现并没有触发 然后查看源码需要将value的“闭合</li>
 </ul>
-</li>
-<li>攻击方式<ul>
-<li>论坛 博客 留言板</li>
+<p><img src="https://s1.ax1x.com/2020/03/25/8XNd8P.png" srcset="/img/loading.gif" alt=""></p>
+<ul>
+<li>payload:”onclick=”alert(1)</li>
 </ul>
-</li>
-<li>DOM型XSS<ul>
-<li>是一种特殊的反射型XSS基于DOM文档对象模型的一种漏洞</li>
-<li>恶意链接</li>
+<h1 id="第三关"><a href="#第三关" class="headerlink" title="第三关"></a>第三关</h1><p><img src="https://s1.ax1x.com/2020/03/25/8XUYsU.png" srcset="/img/loading.gif" alt=""></p>
+<ul>
+<li>跟着上一题的思路 直接插入onclick点击触发事件 没有触发</li>
+<li>查看源代码 发现这次value是用‘闭合的 所以构造payload</li>
 </ul>
-</li>
+<p><img src="https://s1.ax1x.com/2020/03/25/8XawnS.png" srcset="/img/loading.gif" alt=""></p>
+<ul>
+<li>payload:’onclick=’alert(1)</li>
 </ul>
-</li>
-<li>检测XSS<ul>
-<li>手工检测<ul>
-<li>可得知输出位置<br>输入一些敏感字符 例如“&lt;,&gt;,”,’,()”等 再提交请求后查看HTML源代码看这些输入的字符是否被转义</li>
-<li>无法得知输出位置<br>输入”/&gt;xss test 测试</li>
+<h1 id="第四关"><a href="#第四关" class="headerlink" title="第四关"></a>第四关</h1><p><img src="https://s1.ax1x.com/2020/03/25/8XdmNj.png" srcset="/img/loading.gif" alt=""></p>
+<ul>
+<li>这道题好像跟第二关没什么区别 直接带入payload就可以通过</li>
 </ul>
-</li>
-<li>全自动检测<ul>
-<li>APPSACN AWVS burpsuite 等工具</li>
-<li>专业的XSS扫描工具：XSSER XSSF</li>
+<p><img src="https://s1.ax1x.com/2020/03/25/8Xw3RI.png" srcset="/img/loading.gif" alt=""></p>
+<ul>
+<li>payload:”onclick=”alert(1)</li>
 </ul>
-</li>
+<h1 id="第五关"><a href="#第五关" class="headerlink" title="第五关"></a>第五关</h1><p><img src="https://s1.ax1x.com/2020/03/25/8XBSN4.png" srcset="/img/loading.gif" alt=""></p>
+<ul>
+<li>尝试用上一关方法插入 发现点击并没有触发 查看源代码发现他把on给过滤了变成o_n</li>
+<li>尝试大小写输入跟双写输入发现都没有效果 使用其它语句发现尖括号没有被过滤但是&lt;script被过滤了</li>
+<li>第二次引用keyword时没有转义，使用”&gt;可以闭合input标签 所以使用不含 on 和 &lt;script的弹窗方式</li>
+<li>paylod:”&gt; <a href='javascript:alert(1)'></li>
 </ul>
-</li>
+<p><img src="https://s1.ax1x.com/2020/03/25/8Xrc9J.png" srcset="/img/loading.gif" alt=""></p>
+<h1 id="第六关"><a href="#第六关" class="headerlink" title="第六关"></a>第六关</h1><p><img src="https://s1.ax1x.com/2020/03/25/8XsQ29.png" srcset="/img/loading.gif" alt=""></p>
+<ul>
+<li>使用上一关的方法发现没有弹出可以点的链接</li>
+<li>查看源代码发现它把href过滤成了hr_ef 尝试大写绕过</li>
+<li>payload:”&gt; <a hRef='javascript:alert(1)'></li>
 </ul>
+<p><img src="https://s1.ax1x.com/2020/03/25/8XsHaT.png" srcset="/img/loading.gif" alt=""></p>
+<h1 id="第七关"><a href="#第七关" class="headerlink" title="第七关"></a>第七关</h1><p><img src="https://s1.ax1x.com/2020/03/25/8Xszs1.png" srcset="/img/loading.gif" alt=""></p>
+<ul>
+<li>使用一些语句插入发现大部分被过滤 src script href </li>
+<li>第二处引用keyword没有编码，可以闭合input标签后，重写关键字绕过过滤</li>
+<li>构造payload:”&gt;<scscriptript>alert(1)<scscriptript></li>
+</ul>
+<p><img src="https://s1.ax1x.com/2020/03/25/8XcAKA.png" srcset="/img/loading.gif" alt=""></p>
+<h1 id="第八关"><a href="#第八关" class="headerlink" title="第八关"></a>第八关</h1><p><img src="https://s1.ax1x.com/2020/03/25/8XcgIK.png" srcset="/img/loading.gif" alt=""></p>
+<ul>
+<li>插入一些基础语句发现 在过滤前将keyword转化为小写，并且过滤了script、on、src、data、href、双引号</li>
+<li>查看源代码发现输入会在href中体现所以使用伪协议构造由于过滤了script可以考虑编码绕过这里我们用html实体编码替换语句中的t</li>
+<li>paylaod：javascript:alert(1)</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2020/03/25/8X2wu9.png" srcset="/img/loading.gif" alt=""></p>
+<h1 id="第九关"><a href="#第九关" class="headerlink" title="第九关"></a>第九关</h1><p><img src="https://s1.ax1x.com/2020/03/25/8X2IEt.png" srcset="/img/loading.gif" alt=""></p>
+<ul>
+<li>使用上一关的payload 添加后发现它说我的链接不合法</li>
+<li>查看源码 发现它必须输入http://  的链接</li>
+<li>更改payload:javascript:alert(1)//http://</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2020/03/25/8Xf0Bj.png" srcset="/img/loading.gif" alt=""></p>
+<h1 id="第十关"><a href="#第十关" class="headerlink" title="第十关"></a>第十关</h1><p><img src="https://s1.ax1x.com/2020/03/25/8XokYn.png" srcset="/img/loading.gif" alt=""></p>
+<ul>
+<li>拿到这个题发现没有框 在url地址栏中插入 传入一些参数后发现页面没有变化 查看网页源代码 发现有三个隐藏的参数 t_link t_history t_sort</li>
+<li>构造传参 keyword=test&amp;t_link=test1&amp;t_history=test2&amp;t_sort=test3</li>
+<li>传入后发现t_sort的值被写入</li>
+<li>所以我们可以使用双引号仅闭合input标签中对value，然后添加属性是input显现在页面中</li>
+<li>在页面中添加一个按钮 触发onclick事件 构造payload:&amp;t_sort=test” type=”button” onclick=”javascript:alert(1)”</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2020/03/25/8XbXKx.png" srcset="/img/loading.gif" alt=""></p>
 
             </div>
             <hr>
@@ -243,16 +278,11 @@
                 <div class="post-prevnext row">
                   <div class="post-prev col-12 col-md-6">
                     
-                      <a href="/2020/03/25/XSS-labs/">
-                        <i class="fa fa-chevron-left"></i>
-                        <span>XSS-labs(1-10)</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-12 col-md-6">
                     
-                      <a href="/2020/03/18/SQL%E6%B3%A8%E5%85%A5%E4%B9%8B%E7%BB%95%E8%BF%87/">
-                        <span>SQL注入之绕过</span>
+                      <a href="/2020/03/21/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/">
+                        <span>XSS跨站脚本</span>
                         <i class="fa fa-chevron-right"></i>
                       </a>
                     
@@ -425,7 +455,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "XSS跨站脚本&nbsp;",
+        "XSS-labs(1-10)&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
