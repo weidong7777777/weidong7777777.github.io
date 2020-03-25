@@ -133,7 +133,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    676 字
+                    710 字
                   </span>
                 
 
@@ -174,70 +174,64 @@
 <li>首先使用最简单的语句在url框中插入，直接通过</li>
 </ul>
 <p><img src="https://s1.ax1x.com/2020/03/25/8XJIDH.png" srcset="/img/loading.gif" alt=""></p>
-<ul>
-<li>payload: <script>alert(1)</script></li>
-</ul>
+<pre><code class="payload">&lt;script&gt;alert(1)&lt;/script&gt;</code></pre>
 <h1 id="第二关"><a href="#第二关" class="headerlink" title="第二关"></a>第二关</h1><p><img src="https://s1.ax1x.com/2020/03/25/8XYuZ9.png" srcset="/img/loading.gif" alt=""></p>
 <ul>
 <li>XSS嘛 见框就插 提交后发现它把&lt;&gt;都给过滤了 所以就想到了用on事件触发</li>
 <li>插入onclick=alert(1)点击输入框发现并没有触发 然后查看源码需要将value的“闭合</li>
 </ul>
 <p><img src="https://s1.ax1x.com/2020/03/25/8XNd8P.png" srcset="/img/loading.gif" alt=""></p>
-<ul>
-<li>payload:”onclick=”alert(1)</li>
-</ul>
+<pre><code class="paylaod">&quot;onclick=&quot;alert(1)</code></pre>
 <h1 id="第三关"><a href="#第三关" class="headerlink" title="第三关"></a>第三关</h1><p><img src="https://s1.ax1x.com/2020/03/25/8XUYsU.png" srcset="/img/loading.gif" alt=""></p>
 <ul>
 <li>跟着上一题的思路 直接插入onclick点击触发事件 没有触发</li>
 <li>查看源代码 发现这次value是用‘闭合的 所以构造payload</li>
 </ul>
 <p><img src="https://s1.ax1x.com/2020/03/25/8XawnS.png" srcset="/img/loading.gif" alt=""></p>
-<ul>
-<li>payload:’onclick=’alert(1)</li>
-</ul>
+<pre><code class="payload">&#39;onclick=&#39;alert(1)</code></pre>
 <h1 id="第四关"><a href="#第四关" class="headerlink" title="第四关"></a>第四关</h1><p><img src="https://s1.ax1x.com/2020/03/25/8XdmNj.png" srcset="/img/loading.gif" alt=""></p>
 <ul>
 <li>这道题好像跟第二关没什么区别 直接带入payload就可以通过</li>
 </ul>
 <p><img src="https://s1.ax1x.com/2020/03/25/8Xw3RI.png" srcset="/img/loading.gif" alt=""></p>
-<ul>
-<li>payload:”onclick=”alert(1)</li>
-</ul>
+<pre><code class="payload">&quot;onclick=&quot;alert(1)</code></pre>
 <h1 id="第五关"><a href="#第五关" class="headerlink" title="第五关"></a>第五关</h1><p><img src="https://s1.ax1x.com/2020/03/25/8XBSN4.png" srcset="/img/loading.gif" alt=""></p>
 <ul>
 <li>尝试用上一关方法插入 发现点击并没有触发 查看源代码发现他把on给过滤了变成o_n</li>
 <li>尝试大小写输入跟双写输入发现都没有效果 使用其它语句发现尖括号没有被过滤但是&lt;script被过滤了</li>
 <li>第二次引用keyword时没有转义，使用”&gt;可以闭合input标签 所以使用不含 on 和 &lt;script的弹窗方式</li>
-<li>paylod:”&gt; <a href='javascript:alert(1)'></li>
 </ul>
+<pre><code class="payload">&quot;&gt; &lt;a href=&#39;javascript:alert(1)&#39;&gt;</code></pre>
 <p><img src="https://s1.ax1x.com/2020/03/25/8Xrc9J.png" srcset="/img/loading.gif" alt=""></p>
 <h1 id="第六关"><a href="#第六关" class="headerlink" title="第六关"></a>第六关</h1><p><img src="https://s1.ax1x.com/2020/03/25/8XsQ29.png" srcset="/img/loading.gif" alt=""></p>
 <ul>
 <li>使用上一关的方法发现没有弹出可以点的链接</li>
 <li>查看源代码发现它把href过滤成了hr_ef 尝试大写绕过</li>
-<li>payload:”&gt; <a hRef='javascript:alert(1)'></li>
 </ul>
+<pre><code class="payload">&quot;&gt; &lt;a hRef=&#39;javascript:alert(1)&#39;&gt;</code></pre>
 <p><img src="https://s1.ax1x.com/2020/03/25/8XsHaT.png" srcset="/img/loading.gif" alt=""></p>
 <h1 id="第七关"><a href="#第七关" class="headerlink" title="第七关"></a>第七关</h1><p><img src="https://s1.ax1x.com/2020/03/25/8Xszs1.png" srcset="/img/loading.gif" alt=""></p>
 <ul>
 <li>使用一些语句插入发现大部分被过滤 src script href </li>
 <li>第二处引用keyword没有编码，可以闭合input标签后，重写关键字绕过过滤</li>
-<li>构造payload:”&gt;<scscriptript>alert(1)<scscriptript></li>
 </ul>
+<pre><code class="payload">&quot;&gt;&lt;scscriptript&gt;alert(1)&lt;scscriptript&gt;</code></pre>
 <p><img src="https://s1.ax1x.com/2020/03/25/8XcAKA.png" srcset="/img/loading.gif" alt=""></p>
 <h1 id="第八关"><a href="#第八关" class="headerlink" title="第八关"></a>第八关</h1><p><img src="https://s1.ax1x.com/2020/03/25/8XcgIK.png" srcset="/img/loading.gif" alt=""></p>
 <ul>
-<li>插入一些基础语句发现 在过滤前将keyword转化为小写，并且过滤了script、on、src、data、href、双引号</li>
-<li>查看源代码发现输入会在href中体现所以使用伪协议构造由于过滤了script可以考虑编码绕过这里我们用html实体编码替换语句中的t</li>
-<li>paylaod：javascript:alert(1)</li>
-</ul>
+<li><p>插入一些基础语句发现 在过滤前将keyword转化为小写，并且过滤了script、on、src、data、href、双引号</p>
+</li>
+<li><p>查看源代码发现输入会在href中体现所以使用伪协议构造由于过滤了script可以考虑编码绕过这里我们用html实体编码替换语句中的t</p>
 <p><img src="https://s1.ax1x.com/2020/03/25/8X2wu9.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+</ul>
+<pre><code class="payload">javascrip&amp;#116;:alert(1)</code></pre>
 <h1 id="第九关"><a href="#第九关" class="headerlink" title="第九关"></a>第九关</h1><p><img src="https://s1.ax1x.com/2020/03/25/8X2IEt.png" srcset="/img/loading.gif" alt=""></p>
 <ul>
 <li>使用上一关的payload 添加后发现它说我的链接不合法</li>
 <li>查看源码 发现它必须输入http://  的链接</li>
-<li>更改payload:javascript:alert(1)//http://</li>
 </ul>
+<pre><code class="payload">javascrip&amp;#116;:alert(1)//http://</code></pre>
 <p><img src="https://s1.ax1x.com/2020/03/25/8Xf0Bj.png" srcset="/img/loading.gif" alt=""></p>
 <h1 id="第十关"><a href="#第十关" class="headerlink" title="第十关"></a>第十关</h1><p><img src="https://s1.ax1x.com/2020/03/25/8XokYn.png" srcset="/img/loading.gif" alt=""></p>
 <ul>
@@ -245,8 +239,9 @@
 <li>构造传参 keyword=test&amp;t_link=test1&amp;t_history=test2&amp;t_sort=test3</li>
 <li>传入后发现t_sort的值被写入</li>
 <li>所以我们可以使用双引号仅闭合input标签中对value，然后添加属性是input显现在页面中</li>
-<li>在页面中添加一个按钮 触发onclick事件 构造payload:&amp;t_sort=test” type=”button” onclick=”javascript:alert(1)”</li>
+<li>在页面中添加一个按钮 触发onclick事件 构造</li>
 </ul>
+<pre><code class="payload">&amp;t_sort=test&quot; type=&quot;button&quot; onclick=&quot;javascript:alert(1)&quot;</code></pre>
 <p><img src="https://s1.ax1x.com/2020/03/25/8XbXKx.png" srcset="/img/loading.gif" alt=""></p>
 
             </div>
