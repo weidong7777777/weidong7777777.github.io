@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>XSS-labs(11-20)</title>
+    <link href="/2020/03/25/XSS-lab/"/>
+    <url>/2020/03/25/XSS-lab/</url>
+    
+    <content type="html"><![CDATA[<h1 id="level11"><a href="#level11" class="headerlink" title="level11"></a>level11</h1><p><img src="https://s1.ax1x.com/2020/03/25/8Xzx4f.png" srcset="/img/loading.gif" alt=""></p><ul><li>拿到题先从url地址栏keyword传入参数试试</li><li>然后查看源代码 发现有个ref 想到了用referer请求头传参将语句插入 使用bp抓包</li></ul><p><img src="https://s1.ax1x.com/2020/03/25/8jVDlq.png" srcset="/img/loading.gif" alt=""></p><p><img src="https://s1.ax1x.com/2020/03/25/8jVWtJ.png" srcset="/img/loading.gif" alt=""></p><pre><code class="payload">test&quot; type=&quot;button&quot; onclick=&quot;javascript:alert(1)&quot;</code></pre><h1 id="level12"><a href="#level12" class="headerlink" title="level12"></a>level12</h1><p><img src="https://s1.ax1x.com/2020/03/25/8jelsP.png" srcset="/img/loading.gif" alt=""></p><ul><li>根据上一题的思路 直接查看网页源码 发现了 ua 就想到了用ua请求头传参将语句插入</li><li>启动bp</li></ul><p><img src="https://s1.ax1x.com/2020/03/25/8jm6nP.png" srcset="/img/loading.gif" alt=""></p><p><img src="https://s1.ax1x.com/2020/03/25/8jnCB6.png" srcset="/img/loading.gif" alt=""></p><pre><code class="payload">test&quot; type=&quot;button&quot; onclick=&quot;javascript:alert(1)&quot;</code></pre><h1 id="level13"><a href="#level13" class="headerlink" title="level13"></a>level13</h1><p><img src="https://s1.ax1x.com/2020/03/25/8jnsC4.png" srcset="/img/loading.gif" alt=""></p><ul><li>直接查看网页源码 发现cook 使用cookie注入</li><li>启动bp</li></ul><p><img src="https://s1.ax1x.com/2020/03/25/8jQEZt.png" srcset="/img/loading.gif" alt="p"></p><pre><code class="payload">test&quot; type=&quot;button&quot; onclick=&quot;javascript:alert(1)&quot;</code></pre><h1 id="level14"><a href="#level14" class="headerlink" title="level14"></a>level14</h1><p>emmmm 这关因为环境问题 没有通关</p><h1 id="level15"><a href="#level15" class="headerlink" title="level15"></a>level15</h1><ul><li>这个题需要自己改一下js 因为默认的为google会被墙</li><li><a href="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js" target="_blank" rel="noopener">https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js</a></li></ul><p><img src="https://s1.ax1x.com/2020/03/25/8j1GCT.png" srcset="/img/loading.gif" alt=""></p><ul><li>用之前的思路发现没有用处 查看网页源代码发现了angularjs的ng-include直接在包含的页面里 触发不了，用了img标签</li><li>调用第一关代码。需要单引号包裹，否则变成注释</li><li>ng-include 指令用于包含外部的 HTML 文件。包含的内容将作为指定元素的子节点。ng-include 属性的值可以是一个表达式，返回一个文件名。默认情况下，包含的文件需要包含在同一个域名下</li></ul><pre><code class="payload">/level15.php?src=&#39;level1.php?name=test&lt;img src=1 onerror=alert(1)&gt;&#39;</code></pre><p><img src="https://s1.ax1x.com/2020/03/25/8j3TT1.png" srcset="/img/loading.gif" alt=""></p><h1 id="level16"><a href="#level16" class="headerlink" title="level16"></a>level16</h1><p><img src="https://s1.ax1x.com/2020/03/25/8j8cBd.png" srcset="/img/loading.gif" alt=""></p><ul><li>直接尝试用一些语句插入 发现过滤了script 等所以想到用img标签的语句</li><li>构造语句插入发现空格也被转义 于是用%0a %0d分隔符代替空格</li></ul><pre><code class="payload">&lt;img%0dsrc=x%0donerror=alert(1)&gt;</code></pre><p><img src="https://s1.ax1x.com/2020/03/25/8jGJ8f.png" srcset="/img/loading.gif" alt=""></p><h1 id="level17"><a href="#level17" class="headerlink" title="level17"></a>level17</h1><p><img src="https://s1.ax1x.com/2020/03/25/8jGoPx.png" srcset="/img/loading.gif" alt=""></p><ul><li>输入点在url，寻找输出点</li><li>过滤了尖括号 双引号 用on事件触发</li></ul><pre><code class="payload"> onmouseover=alert(1)</code></pre><p><img src="https://s1.ax1x.com/2020/03/25/8jYwhq.png" srcset="/img/loading.gif" alt=""></p><h1 id="level18"><a href="#level18" class="headerlink" title="level18"></a>level18</h1><ul><li>操作同上关一样</li></ul><h1 id="level19-amp-20"><a href="#level19-amp-20" class="headerlink" title="level19&amp;20"></a>level19&amp;20</h1><ul><li>这两道题涉及到flashXss 以及反编译 触及我知识盲区没能解出来</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>XSS</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>网络安全,XSS</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>XSS-labs(1-10)</title>
     <link href="/2020/03/25/XSS-labs/"/>
     <url>/2020/03/25/XSS-labs/</url>

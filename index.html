@@ -149,6 +149,61 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
+      <a href="/2020/03/25/XSS-lab/">
+        <p class="h4 index-header">XSS-labs(11-20)</p>
+      </a>
+
+      <a href="/2020/03/25/XSS-lab/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">level11
+
+拿到题先从url地址栏keyword传入参数试试
+然后查看源代码 发现有个ref 想到了用referer请求头传参将语句插入 使用bp抓包
+
+
+
+test&quot; type=&quot;button&quot; onclick=&quot;javascript:alert(1)&quot;
+level12
+
+根据上一题的思路 直接查看网页源码 发现了 ua 就想到了用ua请求头传参将语句插入
+启动bp
+
+
+
+test&quot; type=&quot;button&quot; onclick=&quot;javascript:alert(1)&quot;
+level13
+</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-25&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/XSS/">XSS</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-XSS/">网络安全,XSS</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a href="/2020/03/25/XSS-labs/">
         <p class="h4 index-header">XSS-labs(1-10)</p>
       </a>
