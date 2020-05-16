@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>对某靶场主机的一次渗透</title>
+    <link href="/2020/05/16/%E5%AF%B9%E6%9F%90%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%B8%80%E6%AC%A1%E6%B8%97%E9%80%8F/"/>
+    <url>/2020/05/16/%E5%AF%B9%E6%9F%90%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%B8%80%E6%AC%A1%E6%B8%97%E9%80%8F/</url>
+    
+    <content type="html"><![CDATA[<h1 id="一、环境"><a href="#一、环境" class="headerlink" title="一、环境"></a>一、环境</h1><ul><li>windows7 虚拟机</li><li>kali 虚拟机</li><li>攻击目标网段 192.168.188.0/24</li></ul><h1 id="二、信息收集"><a href="#二、信息收集" class="headerlink" title="二、信息收集"></a>二、信息收集</h1><ul><li><p>使用nmap进行主机发现</p><pre><code class="shell">nmap 192.168.188.0/24</code></pre></li></ul><p><img src="https://s1.ax1x.com/2020/05/16/Y6zF6P.png" srcset="/img/loading.gif" alt="">       </p><ul><li>发现这个 192.168.188.150 开放的端口最对 访问试试 发现网站</li></ul><p><img src="https://s1.ax1x.com/2020/05/16/YcS4PJ.png" srcset="/img/loading.gif" alt=""></p><ul><li>因为使用后台扫描工具并没有发现后台 我又尝试目录爆破 发现admin.php 目录</li></ul><p><img src="https://s1.ax1x.com/2020/05/16/YcpFZ8.png" srcset="/img/loading.gif" alt=""></p><ul><li>访问 admin.php 发现后台登录页面</li></ul><p><img src="https://s1.ax1x.com/2020/05/16/YcpWOP.png" srcset="/img/loading.gif" alt=""></p><h1 id="三、尝试sql注入"><a href="#三、尝试sql注入" class="headerlink" title="三、尝试sql注入"></a>三、尝试sql注入</h1><ul><li>在页面查找注入点 发现新闻动态页面可能存在注入 使用语句验证</li></ul><pre><code class="shell">http://192.168.188.150/index.php?s=/news/6&#39;</code></pre><ul><li>看返回报错页面 需要用 ）进行闭合 并用 – 将后边语句注释</li></ul><p><img src="https://s1.ax1x.com/2020/05/16/YcPuQA.png" srcset="/img/loading.gif" alt=""></p><p><img src="https://s1.ax1x.com/2020/05/16/YcPgSJ.png" srcset="/img/loading.gif" alt=""></p><ul><li>1=1时正常 1=2时报错 存在注入 使用 order by 查询有多少列</li><li>当order by 7时回显正常  order by 8回显不正常时 发现共7列</li><li>使用联合查询 union select  查询回显位</li></ul><p><img src="https://s1.ax1x.com/2020/05/16/Yci4js.png" srcset="/img/loading.gif" alt=""></p><ul><li>在 2 ， 7 位置输入查询语句 </li></ul><p><img src="https://s1.ax1x.com/2020/05/16/YcFQ58.png" srcset="/img/loading.gif" alt=""></p><ul><li>爆出表名 继续爆列名 </li></ul><p><img src="https://s1.ax1x.com/2020/05/16/YcFxJS.png" srcset="/img/loading.gif" alt=""></p><ul><li>继续爆出字段</li></ul><p><img src="https://s1.ax1x.com/2020/05/16/YckCss.png" srcset="/img/loading.gif" alt=""></p><ul><li>经过base64解码 得到管理员密码 登录后台 </li><li>sqlmap也尝试了直接跑 结果跑不出来 你们可以自己去尝试</li></ul><h1 id="四、文件上传"><a href="#四、文件上传" class="headerlink" title="四、文件上传"></a>四、文件上传</h1><ul><li>拿到后台后寻找上传点 在 网站设置 –&gt;首页大图发现可以上传</li><li>按照提示 只能上传png文件 上传shell 使用bp改包</li><li>这次上传我用的是一个gif文件头的一句话 在MIME类型改成 image/gif 并在上传位置使用00截断</li></ul><p><img src="https://s1.ax1x.com/2020/05/16/YcAuh8.png" srcset="/img/loading.gif" alt=""></p><ul><li>找到上传位置 使用蚁剑连接</li></ul><p><img src="https://s1.ax1x.com/2020/05/16/YcAyH1.png" srcset="/img/loading.gif" alt=""></p><h1 id="五、提权"><a href="#五、提权" class="headerlink" title="五、提权"></a>五、提权</h1><ul><li>因为这是一个win7 32位的系统 在这里我使用CVE-2018-8120 进行提权</li><li>在上一步已经可以连接并上传文件 直接将CVE的exe进行上传 为了方便执行我改为a.exe</li><li>打开终端 执行exe 添加用户 并将用户添加到管理员组</li></ul><p><img src="https://s1.ax1x.com/2020/05/16/YcErRS.png" srcset="/img/loading.gif" alt=""></p><ul><li>因为我是在本地用虚拟机搭的 所以我直接登录</li></ul><p><img src="https://s1.ax1x.com/2020/05/16/YcEfI0.png" srcset="/img/loading.gif" alt=""></p><ul><li><p>进入后查看管理用户桌面 成功提权</p></li><li><p><img src="https://s1.ax1x.com/2020/05/16/YcExJK.png" srcset="/img/loading.gif" alt=""></p></li><li><p>需要注意的是 并不是添加到管理员组就可以进行远程桌面连接 必须在Remote Desktop Users 组里</p></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>渗透测试</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>网络安全,渗透测试</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>XSS-labs(11-20)</title>
     <link href="/2020/03/25/XSS-lab/"/>
     <url>/2020/03/25/XSS-lab/</url>

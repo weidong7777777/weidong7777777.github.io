@@ -149,6 +149,70 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
+      <a href="/2020/05/16/%E5%AF%B9%E6%9F%90%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%B8%80%E6%AC%A1%E6%B8%97%E9%80%8F/">
+        <p class="h4 index-header">对某靶场主机的一次渗透</p>
+      </a>
+
+      <a href="/2020/05/16/%E5%AF%B9%E6%9F%90%E9%9D%B6%E5%9C%BA%E7%9A%84%E4%B8%80%E6%AC%A1%E6%B8%97%E9%80%8F/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">一、环境
+windows7 虚拟机
+kali 虚拟机
+攻击目标网段 192.168.188.0/24
+
+二、信息收集
+使用nmap进行主机发现
+nmap 192.168.188.0/24
+
+
+       
+
+发现这个 192.168.188.150 开放的端口最对 访问试试 发现网站
+
+
+
+因为使用后台扫描工具并没有发现后台 我又尝试目录爆破 发现admin.php 目录
+
+
+
+访问 admin.php 发现后台登录页面
+
+
+三、尝试sql注入
+在页面查找注入点 发现新闻动态页面可能存在注入 使用语句验证
+
+http://192.168.188.150/index.php?s=/news/6</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-16&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">网络安全,渗透测试</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a href="/2020/03/25/XSS-lab/">
         <p class="h4 index-header">XSS-labs(11-20)</p>
       </a>
